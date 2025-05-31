@@ -41,7 +41,7 @@ export function ResumeUpload() {
         summary: extractedData.summary || '',
         experience: extractedData.experience || [],
         education: extractedData.education || [],
-        skills: extractedData.skills || {},
+        skills: extractedData.skills || [],
         projects: extractedData.projects || [],
         certifications: extractedData.certifications || [],
         targetRole: '',
