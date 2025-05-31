@@ -9,9 +9,19 @@ import { initialResumeState } from "@/lib/resume-data";
 
 export default function CreateResumePage() {
   const [resumeData, setResumeData] = useState(initialResumeState);
+  const [aiSuggestions, setAISuggestions] = useState<{
+    summary: string;
+    experience: string[];
+    skills: string[];
+  } | null>(null);
 
   return (
-    <ResumeContext.Provider value={{ resumeData, setResumeData }}>
+    <ResumeContext.Provider value={{ 
+      resumeData, 
+      setResumeData,
+      aiSuggestions,
+      setAISuggestions
+    }}>
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-1 py-10">
