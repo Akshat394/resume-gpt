@@ -1,34 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { ResumeBuilder } from "@/components/resume/resume-builder";
-import { ResumeContext } from "@/components/resume/resume-context";
-import { initialResumeState } from "@/lib/resume-data";
+import { JobSpecificBuilder } from "@/components/resume/job-specific-builder";
 
 export default function CreateResumePage() {
-  const [resumeData, setResumeData] = useState(initialResumeState);
-  const [aiSuggestions, setAISuggestions] = useState<{
-    summary: string;
-    experience: string[];
-    skills: string[];
-  } | null>(null);
-
   return (
-    <ResumeContext.Provider value={{ 
-      resumeData, 
-      setResumeData,
-      aiSuggestions,
-      setAISuggestions
-    }}>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1 py-10">
-          <ResumeBuilder />
-        </main>
-        <Footer />
-      </div>
-    </ResumeContext.Provider>
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-1 py-10">
+        <JobSpecificBuilder />
+      </main>
+      <Footer />
+    </div>
   );
 }

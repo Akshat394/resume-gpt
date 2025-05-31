@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FileText, Upload, Menu, X } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
+import { NavigationMenuItem, NavigationMenuLink } from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,9 +39,6 @@ export function Header() {
           <Link href="/create" className="text-sm font-medium transition-colors hover:text-primary">
             Create Resume
           </Link>
-          <Link href="/upload" className="text-sm font-medium transition-colors hover:text-primary">
-            Upload Resume
-          </Link>
           <Link href="/templates" className="text-sm font-medium transition-colors hover:text-primary">
             Templates
           </Link>
@@ -52,13 +51,6 @@ export function Header() {
           <ModeToggle />
           
           <div className="hidden md:block space-x-2">
-            <Button asChild variant="outline" size="sm">
-              <Link href="/upload">
-                <Upload className="mr-2 h-4 w-4" />
-                Upload
-              </Link>
-            </Button>
-            
             <Button asChild size="sm">
               <Link href="/create">
                 <FileText className="mr-2 h-4 w-4" />
@@ -91,13 +83,6 @@ export function Header() {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Create Resume
-            </Link>
-            <Link 
-              href="/upload" 
-              className="text-sm font-medium py-2 hover:text-primary"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Upload Resume
             </Link>
             <Link 
               href="/templates" 

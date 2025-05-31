@@ -38,11 +38,13 @@ export function Footer() {
                   Create Resume
                 </Link>
               </li>
+              {/* 
               <li>
                 <Link href="/upload" className="text-muted-foreground hover:text-primary">
                   Upload Resume
                 </Link>
               </li>
+              */}
               <li>
                 <Link href="/templates" className="text-muted-foreground hover:text-primary">
                   Templates

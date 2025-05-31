@@ -7,8 +7,13 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
-    <section className="relative py-20 md:py-28">
-      <div className="container mx-auto px-4 text-center">
+    <section className="relative py-20 md:py-28 overflow-hidden">
+      {/* Floating Elements */}
+      <div className="absolute top-10 left-10 w-24 h-24 bg-primary opacity-20 rounded-full mix-blend-multiply animate-float1"></div>
+      <div className="absolute bottom-20 right-20 w-32 h-32 bg-secondary opacity-20 rounded-lg mix-blend-multiply animate-float2"></div>
+      <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-accent opacity-20 rounded-full mix-blend-multiply animate-float3"></div>
+      
+      <div className="container mx-auto px-4 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -29,13 +34,6 @@ export function Hero() {
                 <FileText className="h-5 w-5" />
                 Create My Resume
                 <ArrowRight className="h-4 w-4 ml-1" />
-              </Link>
-            </Button>
-            
-            <Button asChild variant="outline" size="lg" className="gap-2 px-6">
-              <Link href="/upload">
-                <Upload className="h-5 w-5" />
-                Upload My Resume
               </Link>
             </Button>
           </div>
