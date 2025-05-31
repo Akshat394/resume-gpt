@@ -1,60 +1,72 @@
 # Resume GPT 🚀
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Next.js-13+-black?style=for-the-badge&logo=next.js" alt="Next.js 13+" />
-  <img src="https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI" />
-</div>
+A modern, AI-powered resume builder and analyzer that helps you create professional resumes and get intelligent suggestions for improvement.
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Resume_GPT-000000?style=for-the-badge&logo=vercel)](https://resume-gpt-rosy.vercel.app/)
+
+![Next.js](https://img.shields.io/badge/Next.js-13+-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue?style=for-the-badge&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3+-38B2AC?style=for-the-badge&logo=tailwind-css)
+![OpenAI](https://img.shields.io/badge/OpenAI-GPT-412991?style=for-the-badge&logo=openai)
 
 ## ✨ Features
 
 ### 📝 Resume Creation
-- **Smart Form Interface**: Step-by-step form with intuitive navigation
-- **Real-time Preview**: See changes instantly as you type
-- **Multiple Templates**: Choose from modern, classic, and minimal designs
-- **PDF Export**: Download your resume in professional PDF format
+- Interactive form-based resume builder
+- Multiple professional templates
+- Real-time preview
+- Export to PDF functionality
+- Responsive design for all devices
 
 ### 🤖 AI-Powered Features
-- **Smart Suggestions**: Get AI-powered recommendations for your resume content
-- **Content Enhancement**: Improve your descriptions and bullet points
-- **Skill Recommendations**: Get suggestions for relevant skills based on your target role
-- **Grammar Check**: Automatic grammar and style improvements
+- Smart resume analysis
+- Personalized improvement suggestions
+- Professional summary generation
+- Experience enhancement recommendations
+- Skill gap analysis
+- Target role optimization
 
 ### 📄 Resume Parsing
-- **PDF Upload**: Upload existing resumes in PDF format
-- **Smart Extraction**: Automatically extract information from your uploaded resume
-- **Data Validation**: Intelligent parsing with error checking
-- **Format Preservation**: Maintain formatting while extracting content
+- PDF resume upload and parsing
+- Automatic data extraction
+- Smart field mapping
+- Support for various resume formats
+- Accurate text extraction
 
-### 🎨 Interactive Elements
-- **Drag & Drop**: Easy file upload with drag and drop support
-- **Live Preview**: Real-time resume preview as you type
-- **Template Switching**: Instantly switch between different resume templates
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
+### 🎯 Interactive Elements
+- Drag-and-drop interface
+- Real-time form validation
+- Instant preview updates
+- Template customization
+- Section reordering
 
-### 🔒 Data Management
-- **Local Storage**: Save your progress automatically
-- **Data Export**: Export your resume data in multiple formats
-- **Privacy Focused**: All processing happens locally
-- **No Data Persistence**: Your data stays on your device
+### 💾 Data Management
+- Local storage support
+- Auto-save functionality
+- Multiple resume versions
+- Easy data export/import
+- Secure data handling
 
 ## 🛠️ Tech Stack
 
 - **Frontend Framework**: Next.js 13+ with App Router
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS with shadcn/ui components
-- **PDF Processing**: pdf-parse for resume parsing
-- **AI Integration**: OpenRouter API for AI suggestions
-- **State Management**: React Context API
-- **Form Handling**: React Hook Form with Zod validation
+- **Styling**: Tailwind CSS
+- **PDF Processing**: pdfjs-dist
+- **AI Integration**: OpenAI API
+- **UI Components**: Custom components with shadcn/ui
+- **State Management**: React Context
+- **Form Handling**: React Hook Form
+- **Validation**: Zod
+- **Notifications**: Sonner
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 16.8 or later
-- npm or yarn package manager
-- OpenRouter API key (for AI features)
+
+- Node.js 18+ 
+- npm or yarn
+- OpenAI API key
 
 ### Installation
 
@@ -72,8 +84,8 @@
    ```
 
 3. Create a `.env.local` file:
-   ```env
-   NEXT_PUBLIC_OPENROUTER_API_KEY=your_api_key_here
+   ```
+   OPENAI_API_KEY=your_api_key_here
    ```
 
 4. Start the development server:
@@ -83,56 +95,31 @@
    yarn dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 📱 Usage
+## 📖 Usage
 
-1. **Create New Resume**
-   - Click "Create New Resume"
-   - Fill in your personal information
-   - Add experience, education, and skills
-   - Get AI suggestions for improvements
-   - Choose a template
-   - Export as PDF
+### Creating a New Resume
 
-2. **Upload Existing Resume**
-   - Click "Upload Resume"
-   - Drag and drop your PDF
-   - Review extracted information
-   - Make necessary edits
-   - Get AI suggestions
-   - Export updated version
+1. Navigate to the create page
+2. Fill in your personal information
+3. Add your experience, education, and skills
+4. Choose a template
+5. Preview and export your resume
 
-## 🎯 Features in Detail
+### Uploading an Existing Resume
 
-### AI-Powered Resume Enhancement
-- **Smart Summaries**: Generate compelling professional summaries
-- **Experience Rewriting**: Improve job descriptions with AI suggestions
-- **Skill Matching**: Get recommendations for relevant skills
-- **Content Optimization**: Enhance your resume's impact
-
-### Resume Templates
-- **Modern**: Clean, contemporary design with emphasis on skills
-- **Classic**: Traditional layout with focus on experience
-- **Minimal**: Simple, elegant design for maximum readability
-
-### Interactive Forms
-- **Step-by-Step**: Guided form completion
-- **Auto-save**: Never lose your progress
-- **Validation**: Real-time input validation
-- **Suggestions**: Context-aware field suggestions
+1. Go to the upload page
+2. Upload your PDF resume
+3. Review the extracted information
+4. Apply AI suggestions for improvements
+5. Save and export the enhanced resume
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
+## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -140,8 +127,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [OpenAI](https://openai.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
-- [OpenRouter](https://openrouter.ai/)
+- [pdfjs-dist](https://mozilla.github.io/pdf.js/)
+
+## 🎯 Live Demo
+
+Try out Resume GPT right now! Visit our [live demo](https://resume-gpt-rosy.vercel.app/) to:
+- Create a new resume from scratch
+- Upload and enhance your existing resume
+- Get AI-powered suggestions
+- Try different templates
+- Export your resume as PDF
 
 ---
 
