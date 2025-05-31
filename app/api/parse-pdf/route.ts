@@ -21,7 +21,10 @@ export async function POST(req: NextRequest) {
     
     const data = await PDFParse(buffer, {
       max: 0, // No page limit
-      version: 'v2.0.550'
+      version: 'v2.0.550',
+      pagerender: (pageData: any) => {
+        return pageData.getTextContent();
+      }
     });
     
     return NextResponse.json({ text: data.text });
