@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import PDFParse from 'pdf-parse';
+import * as pdfjsLib from 'pdfjs-dist';
+
+// Initialize the PDF.js worker
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 export const config = {
   api: {
@@ -17,17 +20,19 @@ export async function POST(req: NextRequest) {
     }
 
     const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     
-    const data = await PDFParse(buffer, {
-      max: 0, // No page limit
-      version: 'v2.0.550',
-      pagerender: (pageData: any) => {
-        return pageData.getTextContent();
-      }
-    });
+    let fullText = '';
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const textContent = await page.getTextContent();
+      const pageText = textContent.items
+        .map((item: any) => item.str)
+        .join(' ');
+      fullText += pageText + '\n';
+    }
     
-    return NextResponse.json({ text: data.text });
+    return NextResponse.json({ text: fullText });
   } catch (err) {
     console.error('PDF parse error:', err);
     return NextResponse.json({ error: 'Failed to parse PDF' }, { status: 500 });
