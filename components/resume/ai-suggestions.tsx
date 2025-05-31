@@ -11,7 +11,7 @@ interface AISuggestionsProps {
     summary: string;
     experience: string[];
     skills: string[];
-  };
+  } | null;
 }
 
 export function AISuggestions({ suggestions }: AISuggestionsProps) {
@@ -22,9 +22,13 @@ export function AISuggestions({ suggestions }: AISuggestionsProps) {
     skills: boolean[];
   }>({
     summary: false,
-    experience: new Array(suggestions.experience.length).fill(false),
-    skills: new Array(suggestions.skills.length).fill(false),
+    experience: new Array(suggestions?.experience.length || 0).fill(false),
+    skills: new Array(suggestions?.skills.length || 0).fill(false),
   });
+
+  if (!suggestions) {
+    return null;
+  }
 
   const applySuggestion = (type: 'summary' | 'experience' | 'skills', index?: number) => {
     if (type === 'summary') {

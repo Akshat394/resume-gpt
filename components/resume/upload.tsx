@@ -7,14 +7,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload, Loader2 } from "lucide-react";
+import { Upload, Loader2, Sparkles } from "lucide-react";
 import { parsePDF, extractResumeData, getAISuggestions } from "@/lib/resume-parser";
 import { toast } from "sonner";
+import { AISuggestions } from "./ai-suggestions";
 
 export function ResumeUpload() {
-  const { setResumeData, setAISuggestions } = useResumeContext();
+  const { setResumeData, setAISuggestions, aiSuggestions } = useResumeContext();
   const [isLoading, setIsLoading] = useState(false);
   const [targetRole, setTargetRole] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -44,20 +46,18 @@ export function ResumeUpload() {
         skills: extractedData.skills || [],
         projects: extractedData.projects || [],
         certifications: extractedData.certifications || [],
-        targetRole: '',
+        targetRole: targetRole || '',
         experienceLevel: 'entry'
       });
 
-      // Get AI suggestions if target role is provided
-      if (targetRole) {
-        const suggestions = await getAISuggestions(text, targetRole);
-        setAISuggestions(suggestions);
-        toast.success("AI suggestions generated!", {
-          description: "Check the suggestions panel for improvements.",
-        });
-      }
-
-      toast.success("Resume uploaded successfully!");
+      // Get AI suggestions
+      const suggestions = await getAISuggestions(text, targetRole || 'Software Engineer');
+      setAISuggestions(suggestions);
+      setShowSuggestions(true);
+      
+      toast.success("Resume uploaded and analyzed successfully!", {
+        description: "Check the AI suggestions below for improvements.",
+      });
     } catch (error) {
       console.error("Error uploading resume:", error);
       toast.error("Failed to upload resume");
@@ -71,7 +71,7 @@ export function ResumeUpload() {
       <div>
         <h2 className="text-2xl font-bold">Upload Resume</h2>
         <p className="text-muted-foreground">
-          Upload your existing resume to get started.
+          Upload your existing resume to get started and receive AI-powered suggestions.
         </p>
       </div>
 
@@ -87,7 +87,7 @@ export function ResumeUpload() {
                 onChange={(e) => setTargetRole(e.target.value)}
               />
               <p className="text-sm text-muted-foreground">
-                Enter your target role to get AI-powered suggestions for improvement.
+                Enter your target role to get more relevant AI-powered suggestions.
               </p>
             </div>
 
@@ -112,6 +112,16 @@ export function ResumeUpload() {
           </div>
         </CardContent>
       </Card>
+
+      {showSuggestions && aiSuggestions && (
+        <div className="mt-8">
+          <div className="flex items-center gap-2 mb-4">
+            <Sparkles className="h-5 w-5 text-yellow-500" />
+            <h3 className="text-xl font-semibold">AI Suggestions</h3>
+          </div>
+          <AISuggestions suggestions={aiSuggestions} />
+        </div>
+      )}
     </div>
   );
 } 
