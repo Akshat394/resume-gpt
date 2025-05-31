@@ -143,5 +143,5 @@ Try out Resume GPT right now! Visit our [live demo](https://resume-gpt-rosy.verc
 ---
 
 <div align="center">
-  Made with ❤️ by [Akshat394](https://github.com/Akshat394)
+  Made with ❤️ by Akshat
 </div>
