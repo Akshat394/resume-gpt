@@ -78,24 +78,24 @@ export function ResumePreview() {
   };
 
   const handleDownloadPDF = async () => {
-    console.log("handleDownloadPDF called");
+    console.log("handleDownloadPDF started");
     try {
+      console.log("Getting resume element...");
       setIsGenerating(true);
       const element = document.getElementById('resume-content');
       if (!element) {
+        console.error('Resume content not found');
         throw new Error('Resume content not found');
       }
-
-      // Clone the element to avoid modifying the original
+      console.log("Cloning element...");
       const clonedElement = element.cloneNode(true) as HTMLElement;
       
-      // Remove any interactive elements and adjust styles for PDF
+      console.log("Removing buttons...");
       const buttons = clonedElement.getElementsByTagName('button');
       while (buttons.length > 0) {
         buttons[0].remove();
       }
-
-      // Set PDF options
+      console.log("Setting PDF options...");
       const opt = {
         margin: [0.5, 0.5, 0.5, 0.5],
         filename: `${getFullName().toLowerCase().replace(/\s+/g, '-')}-resume.pdf`,
@@ -112,12 +112,13 @@ export function ResumePreview() {
         }
       };
 
-      // Generate PDF
+      console.log("Generating and saving PDF...");
       await html2pdf()
         .set(opt)
         .from(clonedElement)
         .save();
-      
+
+      console.log("PDF generation complete.");
       toast({
         title: "Success",
         description: "Resume downloaded successfully!",
@@ -130,6 +131,7 @@ export function ResumePreview() {
         variant: "destructive",
       });
     } finally {
+      console.log("handleDownloadPDF finished");
       setIsGenerating(false);
     }
   };
