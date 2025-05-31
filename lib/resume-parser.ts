@@ -222,11 +222,14 @@ export function extractResumeData(text: string): Partial<ResumeData> {
     }
   }
 
+  // Flatten skills object into array
+  const flattenedSkills = Object.values(skills).flat();
+
   return {
     personalInfo,
     experience,
     education,
-    skills,
+    skills: flattenedSkills,
     projects,
     certifications
   };
